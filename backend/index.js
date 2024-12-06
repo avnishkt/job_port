@@ -20,7 +20,7 @@ app.use(cookieParser());
 const corsOptions = {
   origin: function (origin, callback) {
     console.log('Request Origin:', origin); // Log the incoming origin
-    const allowedOrigins = ['https://job-port-sage.vercel.app', 'https://job-portal-j3.vercel.app'];
+    const allowedOrigins = ['https://job-port-sage.vercel.app', 'https://job-portal-j3.vercel.app', 'https://job-port-i7wwbw0ol-avnishkts-projects.vercel.app'];
 
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
