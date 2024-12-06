@@ -19,10 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log('Request Origin:', origin); // Log the incoming origin
-    const allowedOrigins = ['https://job-port-sage.vercel.app', 'https://job-portal-j3.vercel.app', 'https://job-port-i7wwbw0ol-avnishkts-projects.vercel.app', 'https://job-port-r5a6.onrender.com'];
+    const regex = /https:\/\/job-port-.*\.(vercel\.app|onrender\.com)/;
 
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    // Check if origin matches the pattern or is undefined (for tools like Postman)
+    if (!origin || regex.test(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -30,9 +30,8 @@ const corsOptions = {
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // Allow cookies and credentials
+  credentials: true,
 };
-
 
 app.use(cors(corsOptions));
 
