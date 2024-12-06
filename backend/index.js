@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-const allowedOrigins = ['http://localhost:5173/'];
+const allowedOrigins = ['http://localhost:5173', 'https://job-port-sage.vercel.app'];
 
 const corsOptions = {
   origin: allowedOrigins,
